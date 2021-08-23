@@ -13,7 +13,7 @@ extern "C" void setup(ModInfo& info) {
     info.id = ID;
     info.version = VERSION;
     modInfo = info;
-	
+    
     getSmoothedControllerConfig().Init(modInfo);
     getLogger().info("Completed SmoothedController setup!");
 }

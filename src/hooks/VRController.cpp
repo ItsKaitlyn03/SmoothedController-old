@@ -25,7 +25,7 @@ void SmoothController(GlobalNamespace::VRController* instance) {
     }
 
     static float posSmoth = 20.f - Mathf::Clamp(getSmoothedControllerConfig().PositionSmoothing.GetValue(), 0.f, 20.f);
-	static float rotSmoth = 20.f - Mathf::Clamp(getSmoothedControllerConfig().RotationSmoothing.GetValue(), 0.f, 20.f);
+    static float rotSmoth = 20.f - Mathf::Clamp(getSmoothedControllerConfig().RotationSmoothing.GetValue(), 0.f, 20.f);
 
     SafePtr<SmoothedController::Wrapper> wrapperI = nullptr;
     if (wrappers.find(instance->get_node()) == wrappers.end()) {
@@ -35,24 +35,24 @@ void SmoothController(GlobalNamespace::VRController* instance) {
         wrapperI = *wrappers[instance->get_node()];
     }
 
-	float angDiff = Quaternion::Angle(wrapperI->smoothedRotation, instance->get_transform()->get_localRotation());
-	wrapperI->angleVelocitySnap = Math::Min(wrapperI->angleVelocitySnap + angDiff, 90.f);
+    float angDiff = Quaternion::Angle(wrapperI->smoothedRotation, instance->get_transform()->get_localRotation());
+    wrapperI->angleVelocitySnap = Math::Min(wrapperI->angleVelocitySnap + angDiff, 90.f);
 
     float snapMulti = Mathf::Clamp(wrapperI->angleVelocitySnap / getSmoothedControllerConfig().SmallMovementThresholdAngle.GetValue(), .1f, 2.5f);
 
-	if (wrapperI->angleVelocitySnap > .1f) {
-		wrapperI->angleVelocitySnap -= Math::Max(.4f, wrapperI->angleVelocitySnap / 1.7f);
-	}
+    if (wrapperI->angleVelocitySnap > .1f) {
+        wrapperI->angleVelocitySnap -= Math::Max(.4f, wrapperI->angleVelocitySnap / 1.7f);
+    }
 
-	if (getSmoothedControllerConfig().PositionSmoothing.GetValue() > 0.f) {
-		wrapperI->smoothedPosition = Vector3::Lerp(wrapperI->smoothedPosition, instance->get_transform()->get_localPosition(), posSmoth * Time::get_deltaTime() * snapMulti);
+    if (getSmoothedControllerConfig().PositionSmoothing.GetValue() > 0.f) {
+        wrapperI->smoothedPosition = Vector3::Lerp(wrapperI->smoothedPosition, instance->get_transform()->get_localPosition(), posSmoth * Time::get_deltaTime() * snapMulti);
         instance->get_transform()->set_localPosition(wrapperI->smoothedPosition);
-	}
+    }
 
-	if (getSmoothedControllerConfig().RotationSmoothing.GetValue() > 0.f) {
-		wrapperI->smoothedRotation = Quaternion::Lerp(wrapperI->smoothedRotation, instance->get_transform()->get_localRotation(), rotSmoth * Time::get_deltaTime() * snapMulti);
+    if (getSmoothedControllerConfig().RotationSmoothing.GetValue() > 0.f) {
+        wrapperI->smoothedRotation = Quaternion::Lerp(wrapperI->smoothedRotation, instance->get_transform()->get_localRotation(), rotSmoth * Time::get_deltaTime() * snapMulti);
         instance->get_transform()->set_localRotation(wrapperI->smoothedRotation);
-	}
+    }
 }
 
 MAKE_HOOK_MATCH(
