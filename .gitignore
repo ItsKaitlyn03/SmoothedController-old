@@ -48,3 +48,7 @@ ndkpath.txt
 extern/
 Android.mk.backup
 qpm.shared.json
+
+# Editors
+/.vscode
+/.idea
