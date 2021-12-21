@@ -1,4 +1,4 @@
-#include "Wrapper.hpp"
+#include "SmoothedControllerWrapper.hpp"
 
 DEFINE_TYPE(SmoothedController, Wrapper);
 

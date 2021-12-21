@@ -1,6 +1,6 @@
 ### Need help/support? Ask in one of BSMG's support channels for Quest, or join my [Discord server](https://discord.gg/JxWFE37Dsc)!
 
-# SmoothedController
+# Smoothed Controller
 
 Smoothes your Controller position while in menus to make it less shaky, making the UI easier to use, etc.
 

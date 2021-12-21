@@ -1,6 +1,6 @@
 #include "SmoothedController.hpp"
 #include "SmoothedControllerConfig.hpp"
-#include "Wrapper.hpp"
+#include "SmoothedControllerWrapper.hpp"
 
 #include <map>
 
@@ -64,7 +64,7 @@ MAKE_HOOK_MATCH(
     using namespace UnityEngine;
     using namespace UnityEngine::XR;
     
-    // Because Quest is dumb and we dont have transpilers, we gotta reimplement this entire method. :D
+    // Because Quest is dumb and we don't have transpilers, we gotta reimplement this entire method :D
 
     Vector3 lastTrackedPosition;
     Quaternion localRotation;

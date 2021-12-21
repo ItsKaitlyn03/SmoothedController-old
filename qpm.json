@@ -3,8 +3,8 @@
   "dependenciesDir": "extern",
   "info": {
     "name": "SmoothedController",
-    "id": "SmoothedController",
-    "version": "1.1.0",
+    "id": "smoothedcontroller",
+    "version": "1.2.0",
     "url": null,
     "additionalData": {}
   },
